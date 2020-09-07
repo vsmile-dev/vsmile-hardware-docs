@@ -64,12 +64,14 @@ Applies a vertical offset to the plane, for screen-scrolling
 | Bits | Function | Description | 
 | - | - | - |
 | 0-12 | Tile Data Address | Memory Address of Tile Data |
+| 13-15 | Unused | |
 
 #### 0x05 - Extended Attribute Address
 
 | Bits | Function | Description | 
 | - | - | - |
 | 0-12 | Attribute Data Address | Memory Address of Attribute Data |
+| 13-15 | Unused | |
 
 
 
