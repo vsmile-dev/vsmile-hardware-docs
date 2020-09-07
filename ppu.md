@@ -16,7 +16,7 @@ Currently this information is sourced from unununium and mame. Some features may
 | 0x283C - 0x283D| TV Control |
 | 0x2842  | Sprite Control |
 | 0x2862 | Video IRQ Enable | 
-| 0x2863 | Video IQQ Acknowledge |
+| 0x2863 | Video IRQ Acknowledge |
 | 0x2870 - 0x2872 | Sprite DMA |
 
 ### Page Registers
