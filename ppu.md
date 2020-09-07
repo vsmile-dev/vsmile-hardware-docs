@@ -6,7 +6,7 @@ The V-Smile PPU provides three layers of graphics: Two background planes and one
 
 | Offset | Name |
 | - | - |
-| 0x2810 - 0x281B | Page Registers |
+| 0x2810 - 0x281B | [Page Registers](#page-registers) |
 | 0x2820 - 0x2822 | Segment Registers 
 | 0x282A | Blind Level Control |
 | 0x2830 | Fade Effect Control |
