@@ -2,6 +2,8 @@
 
 The V-Smile PPU provides three layers of graphics: Two background planes and one sprite layer.
 
+Currently this information is sourced from unununium and mame. Some features may be exclusive to newer chipsets and not be available on V-Smile.
+
 ## Register Layout
 
 | Offset | Name |
@@ -38,7 +40,7 @@ Applies a vertical offset to the plane, for screen-scrolling
 | 3 | Y-Flip | 0 = Not Mirrored, 1 = Mirror Vertically | 
 | 4-5 | Width | 0 = 0, 1 = 256, 2 = 512, 3 = 768 |
 | 6-7 | Height | 0 = 0, 1 = 256, 2 = 512, 3 = 768 |
-| 8-11 | Palette | ? |
+| 8-11 | Palette Bank | Offset into Palette Ram. 0 = 0, 1 = 0x100 |
 | 12-13 | Depth | ? |
 | 14-15 | Unused? | ? |
 
