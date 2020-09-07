@@ -23,6 +23,18 @@ Currently this information is sourced from unununium and mame. Some features may
 
 These registers use the base address of 0x2810 for Page 1 and 0x2816 for Page 2
 
+ [0x00 - X-Scroll](#0x00---x-scroll)
+ 
+ [0x01 - Y-Scroll](#0x01---y-scroll)
+ 
+ [0x02 - Attributes](#0x02---attributes)
+ 
+ [0x03 - Control](#0x03---control)
+ 
+ [0x04 - Tile Address](#0x04---tile-address)
+ 
+ [0x05 - Extended Attribute Address](#0x05---extended-attribute-address)
+ 
 #### 0x00 - X-Scroll 
 
 Applies a horizontal offset to the plane, for screen-scrolling
