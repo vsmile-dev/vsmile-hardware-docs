@@ -66,9 +66,12 @@ When code execution reaches the end of the current page, the CS register is auto
 
 # Instruction Set
 
+[Load](#load)
+[store](#store)
+
 ## Load
 
-| Instruction | Description | Flags Effected |
+| Instruction | Description | Flags Affected |
 | - | - | - |
 | Rd = Imm6 | Load 6-bit value into Rd | NZ |
 | Rd = Imm16 | Load 16-bit value into Rd| NZ |
@@ -76,5 +79,10 @@ When code execution reaches the end of the current page, the CS register is auto
 | Rd = [A6] | Load 16-bit value from 6-bit memory address | NZ | 
 | Rd = [A16] | Load 16-bit value from 16-bit memory address | NZ |
 | Rd = Rs | Load 16-bit value from Rs | NZ |
-| Rd = {D}:[({++}Rs{--/++)] | Load 16-bit value from Memory Address, with optional data-segment qualifier, optional pre-increment, optional post inc/decrement | NZ |
+| Rd = {D:}[({++}Rs{--/++)] | Load 16-bit value from Memory Address, with optional data-segment qualifier, optional pre-increment, optional post inc/decrement | NZ |
+
+## Store
+
+
+
 
