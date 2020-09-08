@@ -72,23 +72,23 @@ These registers use the base address of 0x2810 for Page 1 and 0x2816 for Page 2
 
 | Bits | Function | Description | 
 | - | - | - |
-| 0-12 | Tile Data Address | Memory Address of Tile Data (0x0000-0x1FFF), gets multipled by 0x40 |
+| 0-12 | Tilemap Address | Memory Address of Tile-Map (0x0000-0x1FFF) |
 | 13-15 | Unused | |
 
 #### 0x05 - Extended Attribute Address
 
 | Bits | Function | Description | 
 | - | - | - |
-| 0-12 | Attribute Data Address | Memory Address of Attribute Data (0x0000-0x1FFF), gets multipled by 0x40 |
+| 0-12 | Attribute Data Address | Memory Address of Attribute Data |
 | 13-15 | Unused | |
 
 ## Segment Registers
 
 | Register | Function | Description | 
 | - | - | - |
-| 0x2820 | Page 1 Segment | ? |
-| 0x2821 | Page 2 Segment | ? |
-| 0x2822 | Sprite Segment | ? |
+| 0x2820 | Page 1 Segment | Page 1 Tile Data Address (Gets multipied by 0x40) |
+| 0x2821 | Page 2 Segment | Page 2 Tile Data Address (Gets multipied by 0x40) |
+| 0x2822 | Sprite Segment | Sprite Data Address (Gets multipied by 0x40) |
 
 
 
