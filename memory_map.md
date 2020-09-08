@@ -18,6 +18,8 @@ Regardless of the selected bank, the memory range 0x0000-0x3FFF is *always* mapp
 
 Memory Space is split into banks, only one bank can be selected at one time.
 
+TODO: Verify this. It's sourced from mame but it seems a little odd to me.
+
 ### Banks 0-3
 
 | Start | End | Description |
