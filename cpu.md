@@ -1,6 +1,8 @@
 # CPU
 
-The V-Smile processor is a Sunplus μnSP, implementing version 1.2 of the ISA.
+The V-Smile processor is a Sunplus μnSP implementing version 1.2 of the ISA.
+
+This document does not attempt to distinguish between ISA versions, so information contained may not be applicable to other Sunplus chipsets.
 
 [Registers](#registers)
 
