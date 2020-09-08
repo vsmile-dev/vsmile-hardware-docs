@@ -8,6 +8,8 @@ This document does not attempt to distinguish between ISA versions, so informati
 
 [Address Space](#address-space)
 
+[Interrupts](#interrupts)
+
 [Instruction Set](#instruction-set)
 
 ## Registers
@@ -46,6 +48,17 @@ The memory map of the μnSP is split into 64K sized pages. The entire 4M address
 
 When code execution reaches the end of the current page, the CS register is auto-incremented by the hardware.
 
-# Instruction Set
- 
-TODO.
+# Interrupts
+
+| Vector | Name |
+| 0xFFF5 | BREAK |
+| 0xFFF6 | FIQ |
+| 0xFFF7 | RESET |
+| 0xFFF8 | IRQ0 |
+| 0xFFF9 | IRQ1 |
+| 0xFFFA | IRQ2 |
+| 0xFFFB | IRQ3 |
+| 0xFFFC | IRQ4 |
+| 0xFFFD | IRQ5 |
+| 0xFFFE | IRQ6 |
+| 0xFFFF | IRQ7 |
