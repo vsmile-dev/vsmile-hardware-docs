@@ -4,12 +4,12 @@ The V-Smile PPU provides three layers of graphics: Two background planes and one
 
 Currently this information is sourced from unununium and mame. Some features may be exclusive to newer chipsets and not be available on V-Smile.
 
-## Register Layout
+## Registers
 
 | Offset | Name |
 | - | - |
 | 0x2810 - 0x281B | [Page Registers](#page-registers) |
-| 0x2820 - 0x2822 | Segment Registers 
+| 0x2820 - 0x2822 | [Segment Registers](#segment-registers) |
 | 0x282A | Blind Level Control |
 | 0x2830 | Fade Effect Control |
 | 0x2836 - 0x2837 | IRQ Position |
@@ -23,10 +23,8 @@ Currently this information is sourced from unununium and mame. Some features may
 
 These registers use the base address of 0x2810 for Page 1 and 0x2816 for Page 2
 
- [0x00 - X-Scroll](#0x00---x-scroll)
- 
- [0x01 - Y-Scroll](#0x01---y-scroll)
- 
+ [0x00 - Scroll](#0x00---scroll)
+
  [0x02 - Attributes](#0x02---attributes)
  
  [0x03 - Control](#0x03---control)
@@ -35,13 +33,12 @@ These registers use the base address of 0x2810 for Page 1 and 0x2816 for Page 2
  
  [0x05 - Extended Attribute Address](#0x05---extended-attribute-address)
  
-#### 0x00 - X-Scroll 
+#### 0x00 - Scroll 
 
-Applies a horizontal offset to the plane, for screen-scrolling
-
-#### 0x01 - Y-Scroll 
-
-Applies a vertical offset to the plane, for screen-scrolling
+| Register | Function | Description | 
+| - | - | - |
+| 0x0 | X-Scroll | ? |
+| 0x1 | Y-Scroll | ? |
 
 #### 0x02 - Attributes
 
@@ -75,15 +72,23 @@ Applies a vertical offset to the plane, for screen-scrolling
 
 | Bits | Function | Description | 
 | - | - | - |
-| 0-12 | Tile Data Address | Memory Address of Tile Data |
+| 0-12 | Tile Data Address | Memory Address of Tile Data (0x0000-0x1FFF), gets multipled by 0x40 |
 | 13-15 | Unused | |
 
 #### 0x05 - Extended Attribute Address
 
 | Bits | Function | Description | 
 | - | - | - |
-| 0-12 | Attribute Data Address | Memory Address of Attribute Data |
+| 0-12 | Attribute Data Address | Memory Address of Attribute Data (0x0000-0x1FFF), gets multipled by 0x40 |
 | 13-15 | Unused | |
+
+## Segment Registers
+
+| Register | Function | Description | 
+| - | - | - |
+| 0x2820 | Page 1 Segment | ? |
+| 0x2821 | Page 2 Segment | ? |
+| 0x2822 | Sprite Segment | ? |
 
 
 
