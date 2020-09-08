@@ -51,6 +51,7 @@ When code execution reaches the end of the current page, the CS register is auto
 # Interrupts
 
 | Vector | Name |
+| - | - |
 | 0xFFF5 | BREAK |
 | 0xFFF6 | FIQ |
 | 0xFFF7 | RESET |
