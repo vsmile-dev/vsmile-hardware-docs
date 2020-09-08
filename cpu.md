@@ -63,3 +63,18 @@ When code execution reaches the end of the current page, the CS register is auto
 | 0xFFFD | IRQ5 |
 | 0xFFFE | IRQ6 |
 | 0xFFFF | IRQ7 |
+
+# Instruction Set
+
+## Load
+
+| Instruction | Description | Flags Effected |
+| - | - | - |
+| Rd = Imm6 | Load 6-bit value into Rd | NZ |
+| Rd = Imm16 | Load 16-bit value into Rd| NZ |
+| Rd = [BP + Imm6] | Load 16-bit value from memory address (BP + 6-bit offset) | NZ |
+| Rd = [A6] | Load 16-bit value from 6-bit memory address | NZ | 
+| Rd = [A16] | Load 16-bit value from 16-bit memory address | NZ |
+| Rd = Rs | Load 16-bit value from Rs | NZ |
+| Rd = {D}:[({++}Rs{--/++)] | Load 16-bit value from Memory Address, with optional data-segment qualifier, optional pre-increment, optional post inc/decrement | NZ |
+
