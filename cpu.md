@@ -66,23 +66,25 @@ When code execution reaches the end of the current page, the CS register is auto
 
 # Instruction Set
 
-[Load](#load)
-[store](#store)
+These tables detail the instruction both in the format used by the official μnSP toolchain as well as the mnemonic form used by the open-source Smile Assembler (smasm) 
 
-## Load
+[Data Transfer](#data-transfer)
+[ALU](#alu)
+[Program Flow])(#program-flow)
+[Other](#other)
 
-| Instruction | Description | Flags Affected |
-| - | - | - |
-| Rd = Imm6 | Load 6-bit value into Rd | NZ |
-| Rd = Imm16 | Load 16-bit value into Rd| NZ |
-| Rd = [BP + Imm6] | Load 16-bit value from memory address (BP + 6-bit offset) | NZ |
-| Rd = [A6] | Load 16-bit value from 6-bit memory address | NZ | 
-| Rd = [A16] | Load 16-bit value from 16-bit memory address | NZ |
-| Rd = Rs | Load 16-bit value from Rs | NZ |
-| Rd = {D:}[({++}Rs{--/++)] | Load 16-bit value from Memory Address, with optional data-segment qualifier, optional pre-increment, optional post inc/decrement | NZ |
+## Data Transfer
 
-## Store
-
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd = Imm | mov rd, imm |  | NZ |
+| Rd = [BP + offset] | mov rd, [BP + offset] | Offset is limited to 6 bits | NZ |
+| Rd = [addr] | mov rd, [addr] | | NZ | 
+| Rd = Rs | mov rd, rs | | NZ |
+| Rd = {D:}[({++}Rs{--/++)] | mov rd, {D:}[({++}Rs{--/++)] | Optional data-segment qualifier (D:), optional pre-increment, optional post inc/decrement | NZ |
+| [BP + offset] = Rd | mov [BP + offset], rd | Offset is limited to 6 bits | |
+| [addr] = Rd | mov [addr], rd | | |
+| {D:}[({++}Rs{--/++)] = Rd | mov {D:}[({++}Rs{--/++)], rd | Optional data-segment qualifier (D:), optional pre-increment, optional post inc/decrement | |
 
 
 
