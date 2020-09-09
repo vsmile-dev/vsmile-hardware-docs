@@ -68,7 +68,7 @@ When code execution reaches the end of the current page, the CS register is auto
 
 These tables detail the instruction both in the format used by the official μnSP toolchain as well as the mnemonic form used by the open-source Smile Assembler (smasm) 
 
-NOTE: Unless otherwise specified, instructions that operate on memory ignore DS and only operate on page 0 (0x0000-0xFFFF). Instruction varients that allow a "D:" prefix generate a full 22-bit address via (DS << 16 | addr)
+NOTE: Unless otherwise specified, instructions that operate on memory ignore DS and only operate on page 0 (0x0000-0xFFFF). Instruction varients that allow a "D:" prefix generate a full 22-bit address via `(DS << 16 | addr)`
 
 [Data Transfer](#data-transfer)
 
@@ -93,9 +93,9 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | PUSH Rx, Ry to [Rs] <br> PUSH Rx to [Rs] | push rx-ry [rs] <br> push rx, [rs] | rx-ry signifies a range of registers to push | | 
 | POP Rx, Ry from [Rs] <br> POP Rx from [Rs] | pop rx-ry [rs] <br> pop rx, [rs] | rx-ry signifies a range of registers to pop | |
 
-# ALU
+## ALU
 
-# Program Flow
+## Program Flow
 
-# Other
+## Other
 
