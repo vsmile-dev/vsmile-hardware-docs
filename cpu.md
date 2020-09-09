@@ -110,6 +110,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 ## Data Processing
 
 ### Add
+
 | Instruction | Smasm Form | Notes | Flags Affected |
 | - | - | - | - |
 | Rd += Value | add rd, value | | NZSC |
@@ -130,6 +131,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 
 
 ### Sub
+
 | Instruction | Smasm Form | Notes | Flags Affected |
 | - | - | - | - |
 | Rd -= Value | sub rd, value | | NZSC |
