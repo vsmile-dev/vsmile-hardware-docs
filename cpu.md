@@ -136,7 +136,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd -= [BP + offset] | sub rd, [BP + offset] | | NZSC |
 | Rd -= [addr] | sub rd, [addr] | | NZSC |
 | [addr] = Rd - Rs | sub [addr], rd, rs | | NZSC |
-| Rd -= {D:}[Rs] <br> Rd -= {D:}[++Rs] <br> Rd -
+| Rd -= {D:}[Rs] <br> Rd -= {D:}[++Rs] <br> Rd -= {D:}[Rs--] <br> Rd -= {D:}[Rs++] | sub rd, {D:}[rs] <br> sub rd, {D:}[++rs] <br> sub rd, {D:}[rs--] <br> sub rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
 
 ### Sub with Carry
 
