@@ -68,6 +68,8 @@ When code execution reaches the end of the current page, the CS register is auto
 
 These tables detail the instruction both in the format used by the official μnSP toolchain as well as the mnemonic form used by the open-source Smile Assembler (smasm) 
 
+NOTE: Unless otherwise specified, instructions that operate on memory ignore DS and only operate on page 0 (0x0000-0xFFFF). Instruction varients that allow a "D:" prefix generate a full 22-bit address via (DS << 16 | addr)
+
 [Data Transfer](#data-transfer)
 
 [ALU](#alu)
