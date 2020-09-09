@@ -72,7 +72,7 @@ These tables detail the instruction both in the format used by the official μnS
 
 [ALU](#alu)
 
-[Program Flow])(#program-flow)
+[Program Flow](#program-flow)
 
 [Other](#other)
 
@@ -84,10 +84,10 @@ These tables detail the instruction both in the format used by the official μnS
 | Rd = [BP + offset] | mov rd, [BP + offset] | Offset is limited to 6 bits | NZ |
 | Rd = [addr] | mov rd, [addr] | | NZ | 
 | Rd = Rs | mov rd, rs | | NZ |
-| Rd = {D:}[Rs] <br> Rd = {D:}[++Rs] <br> Rd = {D:}[Rs--] <br> Rd = {D:}[Rs++] | mov rd, {D:}[rs] <br> mov rd, {D:}[++rs] <br> mov rd, {D:}[rs--] <br> mov rd, {D:}[rs++] | Optional data-segment qualifier (D:), optional pre-increment, optional post inc/decrement | NZ |
+| Rd = {D:}[Rs] <br> Rd = {D:}[++Rs] <br> Rd = {D:}[Rs--] <br> Rd = {D:}[Rs++] | mov rd, {D:}[rs] <br> mov rd, {D:}[++rs] <br> mov rd, {D:}[rs--] <br> mov rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
 | [BP + offset] = Rd | mov [BP + offset], rd | Offset is limited to 6 bits | |
 | [addr] = Rd | mov [addr], rd | | |
-| {D:}[Rs] = Rd <br> {D:}[++Rs] = Rd <br> {D:}[Rs--] = Rd <br> {D:}[Rs++] = Rd | mov {D:}[rs], rd <br> mov {D:}[++rs], rd <br> mov {D:}[rs--], rd <br> mov {D:}[rs++] = rd | Optional data-segment qualifier (D:), optional pre-increment, optional post inc/decrement | |
+| {D:}[Rs] = Rd <br> {D:}[++Rs] = Rd <br> {D:}[Rs--] = Rd <br> {D:}[Rs++] = Rd | mov {D:}[rs], rd <br> mov {D:}[++rs], rd <br> mov {D:}[rs--], rd <br> mov {D:}[rs++] = rd | Optional data-segment qualifier (D:) | |
 
 
 
