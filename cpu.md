@@ -88,6 +88,7 @@ These tables detail the instruction both in the format used by the official μnS
 | [BP + offset] = Rd | mov [BP + offset], rd | Offset is limited to 6 bits | |
 | [addr] = Rd | mov [addr], rd | | |
 | {D:}[Rs] = Rd <br> {D:}[++Rs] = Rd <br> {D:}[Rs--] = Rd <br> {D:}[Rs++] = Rd | mov {D:}[rs], rd <br> mov {D:}[++rs], rd <br> mov {D:}[rs--], rd <br> mov {D:}[rs++] = rd | Optional data-segment qualifier (D:) | |
-
+| PUSH Rx, Ry to [Rs] <br> PUSH Rx to [Rs] | push rx-ry [rs] <br> push rx, [rs] | rx-ry signifies a range of registers to push | | 
+| POP Rx, Ry from [Rs] <br> POP Rx from [Rs] | pop rx-ry [rs] <br> pop rx, [rs] | rx-ry signifies a range of registers to pop | |
 
 
