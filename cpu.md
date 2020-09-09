@@ -93,4 +93,9 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | PUSH Rx, Ry to [Rs] <br> PUSH Rx to [Rs] | push rx-ry [rs] <br> push rx, [rs] | rx-ry signifies a range of registers to push | | 
 | POP Rx, Ry from [Rs] <br> POP Rx from [Rs] | pop rx-ry [rs] <br> pop rx, [rs] | rx-ry signifies a range of registers to pop | |
 
+# ALU
+
+# Program Flow
+
+# Other
 
