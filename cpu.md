@@ -116,7 +116,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd += [BP + offset] | add rd, [BP + offset] | | NZSC |
 | Rd += [addr] | add rd, [addr] | | NZSC |
 | [addr] = Rd + Rs | add [addr], rd, rs | | NZSC |
-| Rd += {D:}[Rs] <br> Rd += {D:}[++Rs] <br> Rd += {D:}[Rs--] <br> Rd += {D:}[Rs++] | add rd, {D:}[rs] <br> add rd, {D:}[++rs] <br> add rd, {D:}[rs--] <br> add rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+| Rd += {D:}[Rs] <br> Rd += {D:}[++Rs] <br> Rd += {D:}[Rs--] <br> Rd += {D:}[Rs++] | add rd, {D:}[rs] <br> add rd, {D:}[++rs] <br> add rd, {D:}[rs--] <br> add rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
 ### Add with Carry
 
@@ -126,7 +126,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd += [BP + offset], Carry | adc rd, [BP + offset] | | NZSC |
 | Rd += [addr], Carry | adc rd, [addr] | | NZSC |
 | [addr] = Rd + Rs, Carry | adc [addr], rd, rs | | NZSC |
-| Rd += {D:}[Rs], Carry <br> Rd += {D:}[++Rs], Carry <br> Rd += {D:}[Rs--], Carry <br> Rd += {D:}[Rs++], Carry | adc rd, {D:}[rs] <br> adc rd, {D:}[++rs] <br> adc rd, {D:}[rs--] <br> adc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+| Rd += {D:}[Rs], Carry <br> Rd += {D:}[++Rs], Carry <br> Rd += {D:}[Rs--], Carry <br> Rd += {D:}[Rs++], Carry | adc rd, {D:}[rs] <br> adc rd, {D:}[++rs] <br> adc rd, {D:}[rs--] <br> adc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
 
 ### Sub
@@ -136,7 +136,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd -= [BP + offset] | sub rd, [BP + offset] | | NZSC |
 | Rd -= [addr] | sub rd, [addr] | | NZSC |
 | [addr] = Rd - Rs | sub [addr], rd, rs | | NZSC |
-| Rd -= {D:}[Rs] <br> Rd -= {D:}[++Rs] <br> Rd -= {D:}[Rs--] <br> Rd -= {D:}[Rs++] | sub rd, {D:}[rs] <br> sub rd, {D:}[++rs] <br> sub rd, {D:}[rs--] <br> sub rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+| Rd -= {D:}[Rs] <br> Rd -= {D:}[++Rs] <br> Rd -= {D:}[Rs--] <br> Rd -= {D:}[Rs++] | sub rd, {D:}[rs] <br> sub rd, {D:}[++rs] <br> sub rd, {D:}[rs--] <br> sub rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
 ### Sub with Carry
 
@@ -146,7 +146,7 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd -= [BP + offset], Carry | sbc rd, [BP + offset] | | NZSC |
 | Rd -= [addr], Carry | sbc rd, [addr] | | NZSC |
 | [addr] = Rd - Rs, Carry | sbc [addr], rd, rs | | NZSC |
-| Rd -= {D:}[Rs], Carry <br> Rd -= {D:}[++Rs], Carry <br> Rd -= {D:}[Rs--], Carry <br> Rd -= {D:}[Rs++], Carry | sbc rd, {D:}[rs] <br> sbc rd, {D:}[++rs] <br> sbc rd, {D:}[rs--] <br> sbc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+| Rd -= {D:}[Rs], Carry <br> Rd -= {D:}[++Rs], Carry <br> Rd -= {D:}[Rs--], Carry <br> Rd -= {D:}[Rs++], Carry | sbc rd, {D:}[rs] <br> sbc rd, {D:}[++rs] <br> sbc rd, {D:}[rs--] <br> sbc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
 ## Data Segment Access
 
