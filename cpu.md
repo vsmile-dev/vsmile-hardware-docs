@@ -69,8 +69,11 @@ When code execution reaches the end of the current page, the CS register is auto
 These tables detail the instruction both in the format used by the official μnSP toolchain as well as the mnemonic form used by the open-source Smile Assembler (smasm) 
 
 [Data Transfer](#data-transfer)
+
 [ALU](#alu)
+
 [Program Flow])(#program-flow)
+
 [Other](#other)
 
 ## Data Transfer
