@@ -82,6 +82,8 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 
 ## Data Transfer
 
+### Load
+
 | Instruction | Smasm Form | Notes | Flags Affected |
 | - | - | - | - |
 | Rd = Value | mov rd, value |  | NZ |
@@ -89,13 +91,62 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | Rd = [addr] | mov rd, [addr] | | NZ | 
 | Rd = Rs | mov rd, rs | | NZ |
 | Rd = {D:}[Rs] <br> Rd = {D:}[++Rs] <br> Rd = {D:}[Rs--] <br> Rd = {D:}[Rs++] | mov rd, {D:}[rs] <br> mov rd, {D:}[++rs] <br> mov rd, {D:}[rs--] <br> mov rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+
+### Store
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
 | [BP + offset] = Rd | mov [BP + offset], rd | Offset is limited to 6 bits | |
 | [addr] = Rd | mov [addr], rd | | |
 | {D:}[Rs] = Rd <br> {D:}[++Rs] = Rd <br> {D:}[Rs--] = Rd <br> {D:}[Rs++] = Rd | mov {D:}[rs], rd <br> mov {D:}[++rs], rd <br> mov {D:}[rs--], rd <br> mov {D:}[rs++] = rd | Optional data-segment qualifier (D:) | |
+
+### Push/Pop
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
 | PUSH Rx, Ry to [Rs] <br> PUSH Rx to [Rs] | push rx-ry [rs] <br> push rx, [rs] | rx-ry signifies a range of registers to push | | 
 | POP Rx, Ry from [Rs] <br> POP Rx from [Rs] | pop rx-ry [rs] <br> pop rx, [rs] | rx-ry signifies a range of registers to pop | |
 
 ## Data Processing
+
+### Add
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd += Value | add rd, value | | NZSC |
+| Rd += [BP + offset] | add rd, [BP + offset] | | NZSC |
+| Rd += [addr] | add rd, [addr] | | NZSC |
+| [addr] = Rd + Rs | add [addr], rd, rs | | NZSC |
+| Rd += {D:}[Rs] <br> Rd += {D:}[++Rs] <br> Rd += {D:}[Rs--] <br> Rd += {D:}[Rs++] | add rd, {D:}[rs] <br> add rd, {D:}[++rs] <br> add rd, {D:}[rs--] <br> add rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+
+### Add with Carry
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd += Value, Carry | adc rd, value | | NZSC |
+| Rd += [BP + offset], Carry | adc rd, [BP + offset] | | NZSC |
+| Rd += [addr], Carry | adc rd, [addr] | | NZSC |
+| [addr] = Rd + Rs, Carry | adc [addr], rd, rs | | NZSC |
+| Rd += {D:}[Rs], Carry <br> Rd += {D:}[++Rs], Carry <br> Rd += {D:}[Rs--], Carry <br> Rd += {D:}[Rs++], Carry | adc rd, {D:}[rs] <br> adc rd, {D:}[++rs] <br> adc rd, {D:}[rs--] <br> adc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+
+
+### Sub
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd -= Value | sub rd, value | | NZSC |
+| Rd -= [BP + offset] | sub rd, [BP + offset] | | NZSC |
+| Rd -= [addr] | sub rd, [addr] | | NZSC |
+| [addr] = Rd - Rs | sub [addr], rd, rs | | NZSC |
+| Rd -= {D:}[Rs] <br> Rd -= {D:}[++Rs] <br> Rd -
+
+### Sub with Carry
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd -= Value, Carry | sbc rd, value | | NZSC |
+| Rd -= [BP + offset], Carry | sbc rd, [BP + offset] | | NZSC |
+| Rd -= [addr], Carry | sbc rd, [addr] | | NZSC |
+| [addr] = Rd - Rs, Carry | sbc [addr], rd, rs | | NZSC |
+| Rd -= {D:}[Rs], Carry <br> Rd -= {D:}[++Rs], Carry <br> Rd -= {D:}[Rs--], Carry <br> Rd -= {D:}[Rs++], Carry | sbc rd, {D:}[rs] <br> sbc rd, {D:}[++rs] <br> sbc rd, {D:}[rs--] <br> sbc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
 
 ## Data Segment Access
 
