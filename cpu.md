@@ -150,6 +150,25 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | [addr] = Rd - Rs, Carry | sbc [addr], rd, rs | | NZSC |
 | Rd -= {D:}[Rs], Carry <br> Rd -= {D:}[++Rs], Carry <br> Rd -= {D:}[Rs--], Carry <br> Rd -= {D:}[Rs++], Carry | sbc rd, {D:}[rs] <br> sbc rd, {D:}[++rs] <br> sbc rd, {D:}[rs--] <br> sbc rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
+### Negate
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| Rd = -Value | neg rd, value | | NZ |
+| Rd = -[BP + offset] | neg rd, [BP + offset] | | NZ |
+| Rd = -[addr] | neg rd, [addr] | | NZ |
+| [addr] = -Rd | neg [addr], rd, rs | | NZ |
+| Rd = -{D:}[Rs] <br> Rd = -{D:}[++Rs] <br> Rd = -{D:}[Rs--] <br> Rd =- {D:}[Rs++] | neg rd, {D:}[rs] <br> neg rd, {D:}[++rs] <br> neg rd, {D:}[rs--] <br> neg rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZ |
+
+### Compare
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+| CMP Rd, Value | cmp rd, value | | NZSC |
+| CMP Rd, [BP + offset] | cmp rd, [BP + offset] | | NZSC |
+| CMP Rd, [addr] | cmp rd, [addr] | | NZSC |
+| CMP Rd, Rs | cmp rd, rs | | NZSC |
+| CMP Rd, {D:}[Rs] <br> CMP Rd, {D:}[++Rs] <br> CMP Rd, {D:}[Rs--] <br> CMP Rd, {D:}[Rs++] | cmp rd, {D:}[rs] <br> cmp rd, {D:}[++rs] <br> cmp rd, {D:}[rs--] <br> cmp rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
+
 ## Data Segment Access
 
 TODO:
