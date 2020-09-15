@@ -8,8 +8,3 @@ The VTech V-Smile is an educational/learning game console built around the Sunpl
 
 [PPU](ppu.md)
 
-[Audio](audio.md)
-
-[IO](io.md)
-
-[DMA](dma.md)
