@@ -169,10 +169,80 @@ NOTE: Unless otherwise specified, instructions that operate on memory ignore DS 
 | CMP Rd, Rs | cmp rd, rs | | NZSC |
 | CMP Rd, {D:}[Rs] <br> CMP Rd, {D:}[++Rs] <br> CMP Rd, {D:}[Rs--] <br> CMP Rd, {D:}[Rs++] | cmp rd, {D:}[rs] <br> cmp rd, {D:}[++rs] <br> cmp rd, {D:}[rs--] <br> cmp rd, {D:}[rs++] | Optional data-segment qualifier (D:) | NZSC |
 
+### XOR
+
+### OR
+
+### AND
+
+### TEST
+
+### MUL
+
+Multiplication result is stored in R3 and R4 (the register pair is called MR)
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+|MR = Rd x Rs| |Signed multiplication| |
+|MR = Rd x Rs,us| |Rd is unsigned, Rs is signed| |
+|FIRJMOV OFF| |Disable automatic data movement for multiply-accumulate operations| |
+|FIRJMOV ON| |Enable automatic data movement for multiply-accumulate operations| |
+|MR = [Rd] x [Rs],n| |Multiply-accumulate two sets of N signed values pointed by Rd and Rs| |
+|MR = [Rd] x [Rs],us,n| |Multiply-accumulate two sets of N values pointed by Rd (unsigned values) and Rs (signed values)| |
+
 ## Data Segment Access
 
 TODO:
 
 ## Program Flow
 
-TODO:
+### Conditional jumps
+
+Syntax:
+
+    JMP label
+
+The target address is stored as a 6 bit displacement. So this can only jump back and forward 63 addresses.
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+|JCC,JB,JNAE| |Jump if C=0| |
+|JCS,JNB,JAE| |Jump if C=1| |
+|JSC,JGE,JNL| |Jump if S=0| |
+|JSS,JNGE,JL| |Jump if S=1| |
+|JNE,JNZ| |Jump if Z=0| |
+|JZ,JE| |Jump if Z=1| |
+|JPL| |Jump if N=0| |
+|JMI| |Jump if N=1| |
+|JBE,JNA| |Jump if Z=1 or C=0| |
+|JNA| |Jump if Z=1 or C=0| |
+|JNBE,JA| |Jump if Z=0 and C=1| |
+|JLE,JNG| |Jump if Z=1 or S=1| |
+|JNLE,JG| |Jump if Z=0 and S=0| |
+|JVC| |Jump if N=S| |
+|JVS| |Jump if N != S| |
+|JMP| |Jump always| |
+
+### Other instructions
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+|CALL Label| |Push PC and SR to the stack, and far jump to label. This sets both PC and the extended PC bits in SR, allowing to call anywhere in memory| |
+|RETF| |Return from subroutine. Restores SR and PC from the stack| |
+|RETI| |Return from interrupt. Restores SR and PC from the stack and restores interrupt flags| |
+|GOTO Label| |Far jump (sets both PC and SR). Previous PC and SR are not saved on the stack| |
+|BREAK| |System call| |
+|NOP| |Do nothing| |
+
+## Interrupt control
+
+| Instruction | Smasm Form | Notes | Flags Affected |
+| - | - | - | - |
+|IRQ OFF| |Disable interrupts| |
+|IRQ ON| |Enable interrupts| |
+|FIQ OFF| |Disable fast interrupts| |
+|FIQ ON| |Enable fast interrupts| |
+|INT FIQ| |Enable FIQ, disable IRQ| |
+|INT FIQ,IRQ| |Enable FIQ and IRQ| |
+|INT IRQ| |Disable FIQ, enable IRQ| |
+|INT OFF| |Disable FIQ and IRQ| |
