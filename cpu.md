@@ -246,3 +246,160 @@ The target address is stored as a 6 bit displacement. So this can only jump back
 |INT FIQ,IRQ| |Enable FIQ and IRQ| |
 |INT IRQ| |Disable FIQ, enable IRQ| |
 |INT OFF| |Disable FIQ and IRQ| |
+
+# Instruction encoding
+
+The instructions are 16 bit words. Most instructions use a single word, however, some of them use a second word to store an immediate 16-bit value.
+
+The general format is as follows:
+
+| Bits     | 15-12   | 11-9       | 8-6     | 5-3 | 2-0       |
+| Contents | Opcode0 | Operand A  | Opcode1 | OPN | Operand B |
+| Contents | Opcode0 | Operand A  | Opcode1 | 6-bit Immediate |
+
+## Special instructions
+
+"Special" instructions are identified by Opcode0 = 0xF
+
+Opcode1 determines the instruction:
+
+- 0: MUL
+- 1: CALL
+- 2: GOTO
+- 3: ???
+- 4: MULS
+- 5: INT, NOP
+- 6: ???
+- 7: ???
+
+### MUL and MULS
+
+With OperandN = 1 and OperandA != 7 (other cases are not documented yet?)
+
+OperandA and OperandB are multiplied together.
+
+### CALL and GOTO
+
+The target address is formed by the immediate6 value (for CS:) and another word after the instruction (for PC)
+
+### Interrupts
+
+OperandA must be 0.
+
+The operation depends on the Immediate6 value:
+
+- 00: INT OFF
+- 01: INT IRQ
+- 02: INT FIQ
+- 03: INT FIQ,IRQ
+- 04: FIR_MOV ON
+- 05: FIR_MOV OFF
+- 06: ???
+- 07: ???
+- 08: IRQ OFF
+- 09: IRQ ON
+- 0A: ???
+- 0B: ???
+- 0C: FIQ OFF
+- 0D: ???
+- 0E: FIQ ON
+- 0F: ???
+- 25: NOP
+- All other values: ???
+
+## Jump instructions
+
+Jump instructions are identified by Operand A = 0
+
+The type of jump depends on Opcode0:
+
+- 0: JCC JB JNAE
+- 1: JCS JNB JAE
+- 2: JSC JGE JNL
+- 3: JSS JNGE JL
+- 4: JNE JNZ
+- 5: JE JZ
+- 6: JPL
+- 7: JMI
+- 8: JBE JNA
+- 9: JNBE JA
+- A: JLE JNG
+- B: JNLE JG
+- C: JVC
+- D: JVS
+- E: JMP
+- F: Reserved for special instructions (see above)
+
+In jump instructions, Opcode1 is 0 to jump forward, and 1 to jump back. The offset is stored as a 6-bit immediate.
+
+## ALU instructions
+
+Opcode0 determines the instruction type, as follows:
+
+- 0: ADD
+- 1: ADC
+- 2: SUB
+- 3: SBC
+- 4: CMP
+- 5: ???
+- 6: NEG
+- 7: ???
+- 8: XOR
+- 9: LD
+- A: OR
+- B: AND
+- C: TST
+- D: ST
+- E: ???
+- F: Other instructions
+
+For these instructions, Opcode1 defines the addressing mode:
+
+- 0: \[BP+Imm6\]
+- 1: #Imm6
+- 2: special functions: push, pop, reti and retf
+- 3: \[Rs\]
+- 4: addressing depends on opN
+
+When opcode1 is 2:
+
+- LD becomes POP
+- ST becomes PUSH
+
+In a POP instruction:
+
+- OperandA+1 is the first popped register (it is not possible to push R0/SP)
+- OperandN is the number of registers to push
+- OperandB is the register to use as a stack pointer
+
+RETF is a special case of POP with opA=5, opN=2, opB=0 (restores R6 and R7)
+
+RETI is a special case of POP with opA=5, opN=3, opB=0 (restores R6, R7, and an extra special register containing interrupt flags)
+
+In a PUSH instruction:
+
+- OperandA+1 is the last pushed register
+- OperandN is the number of registers to push
+- OperandB is the register to use as a stack pointer
+
+When opcode1 is 3, operandN defines incrementation and use of DS:
+
+- 0: \[Rs\]
+- 1: \[Rs--\]
+- 2: \[Rs++\]
+- 3: \[++Rs\]
+- 4: DS:\[Rs\]
+- 5: DS:\[Rs--\]
+- 6: DS:\[Rs++\]
+- 7: DS:\[++Rs\]
+
+When opcode1 is 4, operandN defines more addressing modes:
+
+- 0: Rs
+- 1: 16-bit immediate value
+- 2: Load from memory address 
+- 3: Store to memory address
+- 4: Rs ASR 1
+- 5: Rs ASR 2
+- 6: Rs ASR 3
+- 7: Rs ASR 4
