@@ -254,6 +254,7 @@ The instructions are 16 bit words. Most instructions use a single word, however,
 The general format is as follows:
 
 | Bits     | 15-12   | 11-9       | 8-6     | 5-3 | 2-0       |
+| - | - | - | - | - | - |
 | Contents | Opcode0 | Operand A  | Opcode1 | OPN | Operand B |
 | Contents | Opcode0 | Operand A  | Opcode1 | 6-bit Immediate |
 
@@ -271,6 +272,8 @@ Opcode1 determines the instruction:
 - 5: INT, NOP
 - 6: ???
 - 7: ???
+
+TODO: BREAK is probably somewhere here.
 
 ### MUL and MULS
 
@@ -348,10 +351,12 @@ Opcode0 determines the instruction type, as follows:
 - 9: LD
 - A: OR
 - B: AND
-- C: TST
+- C: TEST
 - D: ST
 - E: ???
-- F: Other instructions
+- F: Special instructions, see above
+
+TODO: I don't know what the TEST instruction does differently from CMP?
 
 For these instructions, Opcode1 defines the addressing mode:
 
@@ -360,11 +365,15 @@ For these instructions, Opcode1 defines the addressing mode:
 - 2: special functions: push, pop, reti and retf
 - 3: \[Rs\]
 - 4: addressing depends on opN
+- 5: Rs LSL/LSR OpN
+- 6: Rs ROL/ROR OpN
+- 7: \[Imm6\]
 
 When opcode1 is 2:
 
 - LD becomes POP
 - ST becomes PUSH
+- Other values of opcode0 are not allowed
 
 In a POP instruction:
 
@@ -403,3 +412,5 @@ When opcode1 is 4, operandN defines more addressing modes:
 - 5: Rs ASR 2
 - 6: Rs ASR 3
 - 7: Rs ASR 4
+
+When opcode1 is 5 or 6, operandN MSB defines the shift direction, and the 2 other bits define the amount of shifting (1 to 4 bits)
